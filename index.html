@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erik Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img class="avatar-img" src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Richard hanrick">Erik Sarriegui</h1>
+
+          <p class="title">Desarrollador de ideas</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:erik@sarriegui.es" class="contact-link">erik@sarriegui.es</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Teléfono</p>
+
+              <a href="tel:+34679758568" class="contact-link">679 75 85 68</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Cumpleaños</p>
+
+              <time datetime="2001-03-21">21 de Marzo, 2001</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Ubicación</p>
+
+              <address>Donostia, Euskadi</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://github.com/ErikSarriegui" target="_blank" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/erik-perez-639930198/" target="_blank" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/eriksarriegui/" target="_blank" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>Acerca de mi</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Experiencia</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contacto</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="acerca de mi">
+
+        <header>
+          <h2 class="h2 article-title">Acerca de mi</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Soy Erik, un apasionado de la tecnología y el desarrollo de proyectos. He estado los últimos 
+            cuatro años de carrera desarrollando proyectos en diferentes ámbitos para diferentes empresas 
+            y personas.
+          </p>
+
+          <p>
+            Me interesan las tecnologías exponenciales y el potencial que estas tienen para transformar 
+            el mundo en el que vivimos. Soy un apasionado de la vida, disfruto de las personas y de sus 
+            historias así como de los diferentes lugares del mundo. Me encanta aprender y estoy 
+            constantemente en busca de nuevos estímulos que me hagan crecer como persona.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">Aptitudes</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Prototipador</h4>
+
+                <p class="service-item-text">
+                  La prototipación es fundamental para que las cosas sucedan, por esto mismo
+                  siempre estoy trabajando en prototipos.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Inteligencia Artificial</h4>
+
+                <p class="service-item-text">
+                  Trabajo constantemente en aprender más sobre el campo, actualmente trabajo con
+                  XGBoost, HuggingFace, PyTorch...
+                </p>
+              </div>
+
+            </li>
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+        <header>
+            <h2 class="h3 service-title">¿Qué estoy haciendo?</h2>
+          </header>
+  
+          <section class="about-text">
+            <p>
+              Actualmente estoy en mi último año de carrera estudiando LEINN (Liderazgo Emprendimiento e Innovación) en la Universidad de Mondragón. 
+              Gracias a que esta carrera es únicamente práctica, he podido experimentar trabajando en una gran variedad de proyectos con empresas y 
+              entidades de mi entorno.
+            </p>
+  
+            <p>
+              Creo que mi mayor valor radica en la combinación de conocimientos técnicos con la visión empresarial y de gestión de proyectos 
+              que he desarrollado durante el grado.
+
+            </p>
+          </section>
+
+        <!--
+          - Para ir entre páginas
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+          </section>
+
+        </div>
+
+
+        <!--
+          - clients
+        -->
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Clients</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/real.jpg" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/kutxa.jpg" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/aquarium.jpg" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/surfrider.jpg" alt="client logo">
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="experiencia">
+
+        <header>
+          <h2 class="h2 article-title">Experiencia</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">¿Qué he hecho?</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Trabajo de socorrista</h4>
+
+              <span>Verano 2019</span>
+
+              <p class="timeline-text">
+                Fue mi primer contacto con el mundo laboral.
+              </p>
+
+            </li>
+            
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Entrada a LEINN</h4>
+
+              <span>2020</span>
+
+              <p class="timeline-text">
+                Este es el comienzo en lo que a desarrollos de proyectos se refiere.
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Olympia</h4>
+
+              <span>2021</span>
+
+              <p class="timeline-text">
+                Nacio nuestra promotora de eventos, que, ha día de hoy, tres años, 15 eventos
+                y más de 25.000€ más tarde, sigue activa y organizando eventos.
+                
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Camarero</h4>
+
+              <span>2022</span>
+
+              <p class="timeline-text">
+                Con la intención de aprender acerca de la hostelería para un proyecto que tenía en mente,
+                estuve trabajando como camarero todo 2022, en el Hotel Londres.         
+              </p>
+
+            </li>
+
+          </li>
+
+          <li class="timeline-item">
+
+            <h4 class="h4 timeline-item-title">Croupier</h4>
+
+            <span>2022 - 2023</span>
+
+            <p class="timeline-text">
+              Debido a mi pasión por la magia y a las cartas, acabé trabajando en el casino de Donostia
+              como Croupier durante más de un año.       
+            </p>
+
+          </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Estudio en Corea del Sur</h4>
+
+              <span>2023</span>
+
+              <p class="timeline-text">
+                Junto a dos hospitales de Euskadi, realizamos un estudio de tendencias de digitalización del
+                sector sanitario surcoreano.
+              </p>
+
+            </li>
+
+          </li>
+
+          <li class="timeline-item">
+
+            <h4 class="h4 timeline-item-title">OpenPsy</h4>
+
+            <span>2023 - 2024</span>
+
+            <p class="timeline-text">
+              OpenPsy es un agente conversacional que crea pre-diagnósticos de problemas de salud mental. Hemos trabajado este
+              proyecto con diversos psicólogos y desarrolladores.
+            </p>
+
+          </li>
+
+
+          </ol>
+
+        </section>
+
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">Habilidades empresariales</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Ventas</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Desarrollo de proyetos LEAN</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Prototipar</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Trabajo en equipo</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+        <br>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">Habilidades tecnologícas</h3>
+  
+          <ul class="skills-list content-card">
+  
+            <li class="skills-item">
+  
+              <div class="title-wrapper">
+                <h5 class="h5">Python</h5>
+                <data value="95">95%</data>
+              </div>
+  
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 95%;"></div>
+              </div>
+  
+            </li>
+  
+            <li class="skills-item">
+  
+              <div class="title-wrapper">
+                <h5 class="h5">PyTorch</h5>
+                <data value="80">80%</data>
+              </div>
+  
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+  
+            </li>
+  
+            <li class="skills-item">
+  
+              <div class="title-wrapper">
+                <h5 class="h5">Web (HTML, CSS & JS)</h5>
+                <data value="60">60%</data>
+              </div>
+  
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+  
+            </li>
+  
+            <li class="skills-item">
+  
+              <div class="title-wrapper">
+                <h5 class="h5">SQL</h5>
+                <data value="50">50%</data>
+              </div>
+  
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%;"></div>
+              </div>
+  
+            </li>
+  
+          </ul>
+  
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Software</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Sin software</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Software</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Sin software</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="software">
+              <a href="https://www.openpsy.es" target="_blank"  >
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">OpenPsy</h3>
+
+                <p class="project-category">Health | Software</p>
+
+              </a>
+            </li>
+            
+            <li class="project-item  active" data-filter-item data-category="software">
+              <a href="https://urimusic.github.io" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Uri</h3>
+
+                <p class="project-category">Music | Software</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="software">
+              <a href="https://github.com/ErikSarriegui/OrangeNet" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/orangenet.jpg" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">OrangeNet</h3>
+
+                <p class="project-category">IA</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="sin software">
+              <a href="https://olympia.eus" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Olympia</h3>
+
+                <p class="project-category">Promotora de eventos</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="sin software">
+              <a href="https://github.com/ErikSarriegui/AudioDetective" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/AudioDetective.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Audio Detective</h3>
+
+                <p class="project-category">AI | Transcription</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href = "https://www.linkedin.com/pulse/comparativa-de-agentes-conversacionales-erik-perez%3FtrackingId=422W2hCvTdejkTgm1HYHZw%253D%253D/?trackingId=422W2hCvTdejkTgm1HYHZw%3D%3D" target="_blank">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.png" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Tecnología</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">14 de mayo de 2023</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Comparativa de Agentes conversacionales.</h3>
+
+                  <p class="blog-text">
+                    Comparativa entre los diferentes agentes conversacionales del mercado.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href = "https://www.linkedin.com/pulse/review-de-gpt-4-tras-casi-un-mes-uso-erik-perez%3FtrackingId=xBcCN7ZpQYaJMA9cUL0A7w%253D%253D/?trackingId=xBcCN7ZpQYaJMA9cUL0A7w%3D%3D" target="_blank">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-2.png" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Tecnología</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">7 de abril de 2023</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Review de GPT4 tras casi un mes de uso</h3>
+
+                  <p class="blog-text">
+                    Reflexión acerca de GPT4 y lo que esto implica.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contacto">
+
+        <header>
+          <h2 class="h2 article-title">Contacto</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>                                    
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23226.65102045213!2d-1.9944824912016494!3d43.307322030817765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51affe3b68fe15%3A0xe43ec55994864649!2sSan%20Sebasti%C3%A1n%2C%20Gipuzkoa!5e0!3m2!1ses!2ses!4v1685984957525!5m2!1ses!2ses"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+        <header>
+          <h2 class="h3 service-title">Ponte en contacto conmigo</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Estoy deseando escucha más sobre ti. Puedes ponerte en contacto conmigo mediante correo electrónico (<strong>erik@sarriegui.es</strong>) o por
+            teléfono o WhatsApp con el número <strong>679 75 85 68</strong>.
+          </p>
+        </section>
+      </article>
+
+    </div>
+
+  </main>
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
