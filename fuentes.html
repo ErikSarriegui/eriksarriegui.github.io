@@ -76,6 +76,14 @@
         button:active {
             transform: translateY(0);
         }
+
+        /* Ajuste para el botón dentro del popup para que no se vea gigante */
+        .popup-btn {
+            padding: 8px 16px;
+            font-size: 13px;
+            margin-top: 10px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -91,10 +99,10 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <script>
-        // Inicializamos el mapa con un zoom de 17 (mucho más cerca que el 16 anterior)
+        // Inicializamos el mapa
         const map = L.map('map').setView([40.4168, -3.7038], 17);
 
-        // Capa de CartoDB (limpia y bonita)
+        // Capa de CartoDB
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '© OpenStreetMap, © CARTO',
             maxZoom: 20
@@ -102,6 +110,7 @@
 
         let userMarker, closestMarker;
         const fountainMarkers = [];
+        let rutaLayer = null; // Variable para guardar la línea de la ruta
         let currentLat = 40.4168;
         let currentLon = -3.7038;
 
@@ -110,7 +119,6 @@
             const statusDiv = document.getElementById('status');
             
             if ("geolocation" in navigator) {
-                // Pedimos la ubicación automáticamente al cargar
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         currentLat = position.coords.latitude;
@@ -119,7 +127,7 @@
                     },
                     (error) => {
                         console.warn("No se pudo obtener la ubicación:", error);
-                        statusDiv.innerText = "Ubicación denegada. Mostrando el centro de Madrid.";
+                        statusDiv.innerText = "Ubicación denegada. Mostrando el centro.";
                         procesarUbicacion(currentLat, currentLon, "Mostrando fuentes del centro.");
                     },
                     { enableHighAccuracy: true, timeout: 10000 }
@@ -130,19 +138,17 @@
             }
         }
 
-        // Manejar el botón de re-centrar
         document.getElementById('recenter-btn').addEventListener('click', () => {
+            if (rutaLayer) {
+                map.removeLayer(rutaLayer); // Limpiamos la ruta si recentramos
+            }
             initApp();
         });
 
-        // Función que actualiza el mapa y llama a buscar las fuentes
         function procesarUbicacion(lat, lon, mensaje) {
             document.getElementById('status').innerText = mensaje;
-            
-            // Centramos la vista muy cerca (zoom 17)
             map.setView([lat, lon], 17);
 
-            // Actualizamos el marcador del usuario (ahora un punto verde bonito con borde blanco)
             if (userMarker) map.removeLayer(userMarker);
             userMarker = L.circleMarker([lat, lon], {
                 radius: 8,
@@ -156,7 +162,6 @@
             buscarFuentes(lat, lon);
         }
 
-        // Búsqueda de fuentes en Overpass API
         function buscarFuentes(lat, lon) {
             const query = `[out:json][timeout:15];node["amenity"="drinking_water"](around:1000,${lat},${lon});out body;`;
             const url = `https://lz4.overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
@@ -187,7 +192,6 @@
                         fuenteMasCercana = { lat: fLat, lon: fLon, dist: distancia };
                     }
 
-                    // Marcador de fuente estándar (punto azul sutil)
                     const marker = L.circleMarker([fLat, fLon], {
                         radius: 6,
                         fillColor: "#1a73e8",
@@ -200,10 +204,18 @@
                 });
 
                 if (fuenteMasCercana) {
-                    // Marcador de la fuente MÁS CERCANA (Icono grande de Leaflet)
+                    // Añadimos el botón "Cómo llegar" dentro del popup llamando a la nueva función
+                    const popupContent = `
+                        <div style="text-align: center;">
+                            <b>💧 Fuente más cercana</b><br>
+                            A ${Math.round(fuenteMasCercana.dist)} metros de ti.<br>
+                            <button class="popup-btn" onclick="trazarRuta(${fuenteMasCercana.lat}, ${fuenteMasCercana.lon})">🚶 Cómo llegar</button>
+                        </div>
+                    `;
+
                     closestMarker = L.marker([fuenteMasCercana.lat, fuenteMasCercana.lon])
                         .addTo(map)
-                        .bindPopup(`<b>💧 Fuente más cercana</b><br>A ${Math.round(fuenteMasCercana.dist)} metros de ti.`)
+                        .bindPopup(popupContent)
                         .openPopup();
                     
                     document.getElementById('status').innerText = `La fuente más cercana está a ${Math.round(fuenteMasCercana.dist)} metros.`;
@@ -215,13 +227,59 @@
             });
         }
 
+        // NUEVA FUNCIÓN: Traza la ruta usando OSRM
+        function trazarRuta(destLat, destLon) {
+            // Si ya hay una ruta pintada, la borramos
+            if (rutaLayer) {
+                map.removeLayer(rutaLayer);
+            }
+
+            document.getElementById('status').innerText = "Calculando ruta a pie...";
+
+            // Hacemos la petición a la API gratuita de OSRM con el perfil de peatón ("foot")
+            // Nota: OSRM usa el formato longitud,latitud (¡al revés que Leaflet!)
+            const osrmUrl = `https://router.project-osrm.org/route/v1/foot/${currentLon},${currentLat};${destLon},${destLat}?overview=full&geometries=geojson`;
+
+            fetch(osrmUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.routes && data.routes.length > 0) {
+                    // Extraemos la geometría de la ruta
+                    const rutaGeoJSON = data.routes[0].geometry;
+
+                    // Dibujamos la línea en el mapa
+                    rutaLayer = L.geoJSON(rutaGeoJSON, {
+                        style: {
+                            color: '#1a73e8', // Azul a juego con la app
+                            weight: 5,
+                            opacity: 0.8,
+                            dashArray: '10, 10' // Hacemos que sea una línea punteada para indicar "a pie"
+                        }
+                    }).addTo(map);
+
+                    // Ajustamos el zoom y la posición para que se vea toda la ruta en pantalla
+                    map.fitBounds(rutaLayer.getBounds(), { padding: [50, 50] });
+                    document.getElementById('status').innerText = "¡Sigue la línea punteada!";
+                    
+                    // Cerramos el popup para dejar ver bien la ruta
+                    closestMarker.closePopup();
+                } else {
+                    document.getElementById('status').innerText = "No se encontró una ruta a pie.";
+                }
+            })
+            .catch(err => {
+                console.error("Error al calcular la ruta: ", err);
+                document.getElementById('status').innerText = "Error al calcular la ruta.";
+            });
+        }
+
         function limpiarMarcadores() {
             fountainMarkers.forEach(m => map.removeLayer(m));
             fountainMarkers.length = 0;
             if (closestMarker) map.removeLayer(closestMarker);
         }
 
-        // ¡Arrancamos la aplicación nada más cargar!
+        // ¡Arrancamos!
         initApp();
     </script>
 </body>
