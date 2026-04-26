@@ -141,21 +141,44 @@
         function trazarRuta(destLat, destLon) {
             if (rutaLayer) map.removeLayer(rutaLayer);
 
-            const url = `https://router.project-osrm.org/route/v1/foot/${currentLon},${currentLat};${destLon},${destLat}?overview=full&geometries=geojson`;
+            document.getElementById('status').innerText = "Calculando ruta óptima...";
 
-            fetch(url).then(res => res.json()).then(data => {
-                if (data.routes.length > 0) {
+            // Añadimos 'radiuses=50;50' para que el algoritmo sea más flexible al "pegarse" a las calles
+            // y no te obligue a dar vueltas innecesarias si el GPS no es exacto.
+            const url = `https://router.project-osrm.org/route/v1/foot/${currentLon},${currentLat};${destLon},${destLat}?overview=full&geometries=geojson&radiuses=50;50`;
+
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                if (data.code !== 'Ok') {
+                    document.getElementById('status').innerText = "No se encontró un camino a pie.";
+                    return;
+                }
+
+                if (data.routes && data.routes.length > 0) {
                     rutaLayer = L.geoJSON(data.routes[0].geometry, {
-                        style: { color: '#1a73e8', weight: 6, opacity: 0.7, dashArray: '10, 10' }
+                        style: { 
+                            color: '#1a73e8', 
+                            weight: 6, 
+                            opacity: 0.8, 
+                            dashArray: '10, 10',
+                            lineCap: 'round' // Suaviza las esquinas de la ruta
+                        }
                     }).addTo(map);
                     
                     map.fitBounds(rutaLayer.getBounds(), { padding: [50, 50] });
-                    statusDiv.innerText = "Ruta trazada. ¡Sigue los puntos!";
                     
-                    // MOSTRAR botón de cancelar
+                    const distancia = Math.round(data.routes[0].distance);
+                    
+                    statusDiv.innerText = `A pie: ${distancia}m. ¡Sigue la ruta azul!`;
+                    
                     cancelBtn.style.display = "block";
                     map.closePopup();
                 }
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById('status').innerText = "Error de conexión con el servicio de rutas.";
             });
         }
 
